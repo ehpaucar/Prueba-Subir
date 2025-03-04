@@ -1,0 +1,472 @@
+:root {
+  /* Colores principales */
+  --custom-blue: #003893;
+  --custom-yellow: #FCD116;
+  --custom-red: #CE1126;
+  
+  /* Colores secundarios */
+  --light-color: #f8f9fa;
+  --dark-color: #343a40;
+  --success-color: #28a745;
+  --error-color: #dc3545;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--dark-color);
+  background-color: #f5f7fa;
+  position: relative;
+}
+
+/* Imagen de fondo semitransparente */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/public/bandera_fondo.jpg'); /* Reemplaza con la ruta de tu imagen */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.15; /* Ajusta la opacidad según prefieras */
+  z-index: -1;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+/* Estilos del Navbar */
+header {
+  background-color: var(--custom-blue);
+  color: white;
+  box-shadow: var(--box-shadow);
+  border-bottom: 4px solid var(--custom-yellow);
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 0.8rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 40px;
+  margin-right: 1rem;
+}
+
+.navbar-title {
+  font-size: 1.5rem;
+  color: var(--custom-yellow);
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-nav {
+  display: flex;
+  margin-left: auto;
+  list-style: none;
+}
+
+.nav-item {
+  margin-right: 1.5rem;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 0;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: var(--custom-yellow);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--custom-red);
+  transition: width 0.3s;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Estilos del contenido principal */
+main {
+  flex: 1;
+  padding: 2rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border-left: 4px solid var(--custom-blue);
+}
+
+.hidden {
+  display: none;
+}
+
+h2 {
+  color: var(--custom-blue);
+  margin-bottom: 1rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background-color: var(--custom-red);
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: var(--custom-blue);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+
+.btn:hover {
+  background-color: var(--custom-red);
+  transform: translateY(-2px);
+}
+
+.file-input {
+  display: none;
+}
+
+.file-label {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: var(--custom-blue);
+  color: white;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  margin-right: 1rem;
+  transition: all 0.3s;
+}
+
+.file-label:hover {
+  background-color: var(--custom-red);
+}
+
+.file-name {
+  margin-left: 0.5rem;
+  font-style: italic;
+}
+
+.content-box {
+  background-color: var(--light-color);
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  padding: 1rem;
+  margin: 1rem 0;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* Estilos del chatbot */
+.chat-messages {
+  height: 300px;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: var(--light-color);
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+}
+
+.message {
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  max-width: 80%;
+}
+
+.user-message {
+  background-color: var(--custom-yellow);
+  color: var(--custom-blue);
+  margin-left: auto;
+  font-weight: 500;
+}
+
+.bot-message {
+  background-color: #e9ecef;
+  color: var(--dark-color);
+  border-left: 3px solid var(--custom-blue);
+}
+
+.typing {
+  font-style: italic;
+  opacity: 0.7;
+}
+
+.chat-input {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+}
+
+.chat-input input:focus {
+  outline: none;
+  border-color: var(--custom-blue);
+  box-shadow: 0 0 0 2px rgba(0, 56, 147, 0.2);
+}
+
+.error {
+  color: var(--error-color);
+  font-weight: bold;
+}
+
+.success {
+  color: var(--success-color);
+  font-weight: bold;
+}
+
+/* Estilos del Footer */
+footer {
+  background-color: var(--custom-blue);
+  color: white;
+  padding: 2rem 0;
+  margin-top: auto;
+  border-top: 4px solid var(--custom-yellow);
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0 1rem;
+}
+
+.footer-col {
+  flex: 1;
+  min-width: 250px;
+  padding: 0 1rem;
+}
+
+.footer-col h3 {
+  color: var(--custom-yellow);
+  margin-bottom: 1.5rem;
+  position: relative;
+  font-size: 1.3rem;
+}
+
+.footer-col h3::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -0.5rem;
+  width: 60px;
+  height: 3px;
+  background-color: var(--custom-red);
+}
+
+.developers-list {
+  list-style: none;
+}
+
+.developers-list li {
+  padding: 0.4rem 0;
+  position: relative;
+  padding-left: 1rem;
+}
+
+.developers-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--custom-yellow);
+}
+
+.doc-button {
+  display: inline-block;
+  padding: 0.7rem 1.5rem;
+  background-color: var(--custom-red);
+  color: white;
+  text-decoration: none;
+  border-radius: var(--border-radius);
+  margin-top: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.doc-button:hover {
+  background-color: var(--custom-yellow);
+  color: var(--custom-blue);
+  transform: translateY(-3px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  main {
+    padding: 1rem;
+  }
+  
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .navbar-nav {
+    margin-left: 0;
+    margin-top: 1rem;
+    width: 100%;
+  }
+  
+  .message {
+    max-width: 90%;
+  }
+  
+  .footer-container {
+    flex-direction: column;
+  }
+  
+  .footer-col {
+    margin-bottom: 2rem;
+    width: 100%;
+  }
+  
+  .footer-col:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* Estilos para la nube de palabras */
+.word-cloud-container {
+  width: 100%;
+  height: 300px;
+  position: relative;
+  background-color: var(--light-color);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  border: 1px solid #ddd;
+}
+
+/* Animación para cargar la nube de palabras */
+.loading-cloud {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: var(--custom-blue);
+}
+
+/* Tooltips para las palabras */
+.word-tooltip {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  pointer-events: none;
+  z-index: 100;
+  display: none;
+}
+
+/* Estilos para las palabras al pasar el mouse */
+.word-cloud text:hover {
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
+}
+
+/* Títulos de sección con contador */
+.section-title-with-count {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.word-count-badge {
+  background-color: var(--custom-red);
+  color: white;
+  border-radius: 20px;
+  padding: 2px 10px;
+  font-size: 0.8rem;
+  margin-left: 10px;
+}
+
+/* Controles para la nube */
+.cloud-controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.cloud-control-btn {
+  background-color: var(--custom-blue);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.cloud-control-btn:hover {
+  background-color: var(--custom-red);
+}

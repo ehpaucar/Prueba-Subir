@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/log.png">
+  <link rel="stylesheet" href="styles.css">
+  <title>Analizador de Documentos y Chatbot</title>
+</head>
+<body>
+  <div id="app">
+    <!-- Navbar -->
+    <header>
+      <nav class="navbar">
+        <div class="logo-container">
+          <img src="/public/log.png" alt="Logo" class="logo">
+          <h1 class="navbar-title">Analizador de Documentos</h1>
+        </div>
+        <ul class="navbar-nav">
+          <li class="nav-item"><a href="#" class="nav-link">Inicio</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Documentos</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Análisis</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Contacto</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div class="container">
+        <!-- Sección para cargar documentos -->
+        <section id="file-uploader-section" class="card">
+          <h2>Cargar Documento</h2>
+          <p>Sube un archivo para analizarlo (PDF, XLSX, CSV, TXT)</p>
+          <div id="file-uploader"></div>
+        </section>
+        
+        <!-- Sección para mostrar el resumen -->
+        <section id="summary-section" class="card hidden">
+          <h2>Resumen del Documento</h2>
+          <div id="summary-content" class="content-box"></div>
+        </section>
+        
+        <!-- Nueva sección para la nube de palabras frecuentes -->
+        <section id="wordcloud-section" class="card hidden">
+          <div class="section-title-with-count">
+            <h2>Palabras Frecuentes</h2>
+          </div>
+          <p>Las palabras más frecuentes en el documento se muestran con diferentes tamaños según su relevancia:</p>
+          <div id="wordcloud-container" class="word-cloud-container">
+            <div class="loading-cloud">Cargando nube de palabras...</div>
+          </div>
+        </section>
+        
+        <!-- Sección del chatbot -->
+        <section id="chatbot-section" class="card hidden">
+          <h2>Preguntas sobre el Documento</h2>
+          <p>Puedes hacer preguntas sobre el contenido del documento</p>
+          <div id="chatbot-container"></div>
+        </section>
+      </div>
+    </main>
+    <!-- Footer con dos columnas -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-col">
+          <h3>Desarrolladores</h3>
+          <ul class="developers-list">
+            <li>Kevin Josue Amaguaña Rivadeneira</li>
+            <li>Esteban Hernan Paucar Chanatasig</li>
+            <li>Dayana Alexandra Pilatuña Caiza</li>
+            <li>Juan Ariel Tulcanaza Paucar</li>
+            <li>Daniel Esteban Valencia Torres</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Documentación</h3>
+          <p>Accede a toda la documentación del proyecto relacionada con la elaboración de este proyecto.</p>
+          <a href="#" class="doc-button">Ver Documentación</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
